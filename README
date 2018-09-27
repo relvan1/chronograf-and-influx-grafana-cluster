@@ -1,0 +1,13 @@
+ The directory contains the files which are used to build the single docker container running multi-process using the utility supervisor.
+
+In Influx Image, i configured to run 3 services like ssh,influx,chronograf.
+
+We can access the influxdb pod directly using the SSH method and before we have to add the pub key of the maching which is going to access it. (Please contact admin for this help)
+
+We can also use the Chronograf service for InfluxDB query. (Installed this due to unavailability of InfluxDB WebAdminInterface)
+
+I used the utility supervisord which will be helpfull to run the multi services in the single container.
+
+I used the official dockerfile of the InfluxDB and Chronograf and added my supervisor utility and merged all into single Dockerfile.
+
+Let me know if you have any questions
