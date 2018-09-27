@@ -18,20 +18,21 @@ spec:
         - image: relvan/influxdb
           name: influxdb
           volumeMounts:
-          - name: config-volume
-            mountPath: /etc/influxdb
+          - name: mypvc
+            mountPath: /var/lib/fileserver
           ports:
             - containerPort: 8083
               name: influxd
             - containerPort: 8086
               name: api
-            - containerPort: 2003
-              name: graphite
+            - containerPort: 8888
+              name: chronograf
             - containerPort: 22
               name: sshd
       volumes:
-      - name: config-volume
-        configMap:
-         name: influxdb-config
+      - name: mypvc
+        persistentVolumeClaim:
+          claimName: fileserver-claim
+          readOnly: false
       nodeSelector:
         type: storage-and-monitoring

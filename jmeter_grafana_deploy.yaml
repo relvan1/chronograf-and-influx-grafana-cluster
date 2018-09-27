@@ -20,6 +20,9 @@ spec:
         ports:
         - containerPort: 3000
           protocol: TCP
+        volumeMounts:
+        - mountPath: /var/lib/fileserver
+          name: mypvc
         env:
         - name: GF_AUTH_BASIC_ENABLED
           value: "true"
@@ -33,5 +36,10 @@ spec:
           # If you're only using the API Server proxy, set this value instead:
           # value: /api/v1/namespaces/kube-system/services/monitoring-grafana/proxy
           value: /
+      volumes:
+      - name: mypvc
+        persistentVolumeClaim:
+          claimName: fileserver-claim
+          readOnly: false
       nodeSelector:
         type: storage-and-monitoring 

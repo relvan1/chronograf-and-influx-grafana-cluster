@@ -26,7 +26,6 @@ kubectl create namespace $tenant
 ###Creating InfluxDB from YAML files###
 echo ""
 echo ""
-kubectl create -n $tenant -f $working_dir/jmeter_influxdb_configmap.yaml
 kubectl create -n $tenant -f $working_dir/jmeter_influxdb_deploy.yaml
 kubectl create -n $tenant -f $working_dir/jmeter_influxdb_svc.yaml
 echo "Influx Part Created"
@@ -54,7 +53,11 @@ grafana_pod=`kubectl get po -n $tenant | grep jmeter-grafana | awk '{print $1}'`
 
 kubectl exec -ti -n $tenant $grafana_pod -- curl 'http://admin:admin@127.0.0.1:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"jmeterdb","type":"influxdb","url":"http://jmeter-influxdb:8086","access":"proxy","isDefault":true,"database":"jmeter","user":"admin","password":"admin"}' 
 
-sleep 45
+
+echo "PersistantVolume Creation"
+kubectl create -n $tenant -f $working_dir/influx-grafana-pv.yaml
+kubectl create -n $tenant -f $working_dir/influx-grafana-pvc.yaml
+
 
 ###Displaying the links###
 link=`kubectl get svc -n $tenant | awk '{print $4}' | tail -n +2`
