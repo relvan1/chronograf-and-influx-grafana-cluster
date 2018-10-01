@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: jenkins-jmeter
+  labels:
+    app: jenkins-jmeter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-jmeter
+  template:
+    metadata:
+      labels:
+        app: jenkins-jmeter
+    spec:
+      containers:
+        - image: relvan/jenkins
+          name: jenkins
+          ports:
+            - containerPort: 8080
+              name: jenkins
+            - containerPort: 50000
+              name: jenkins-slave
+      nodeSelector:
+        type: storage-and-monitoring

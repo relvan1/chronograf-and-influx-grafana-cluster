@@ -34,9 +34,15 @@ echo "Influx Part Created"
 echo ""
 echo ""
 kubectl create -n $tenant -f $working_dir/jmeter_grafana_deploy.yaml
-
 kubectl create -n $tenant -f $working_dir/jmeter_grafana_svc.yaml
 echo "Grafana Part Created"
+
+###Creating Jenkins from YAML files###
+echo ""
+echo ""
+kubectl create -n $tenant -f $working_dir/jmeter_jenkins_deploy.yaml
+kubectl create -n $tenant -f $working_dir/jmeter_jenkins_svc.yaml
+echo "Jenkins Part Created"
 
 echo namespace = $tenant > $working_dir/tenant_export
 

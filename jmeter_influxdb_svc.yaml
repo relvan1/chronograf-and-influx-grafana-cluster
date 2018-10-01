@@ -24,4 +24,4 @@ spec:
   selector:
     app: influxdb-jmeter
   type: LoadBalancer
-  loadBalancerIP: "35.224.79.94"
+  loadBalancerIP: "35.202.56.153"
