@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: influxdb-claim-another
+  name: influxdb-claim
 spec:
   accessModes:
   - ReadWriteMany

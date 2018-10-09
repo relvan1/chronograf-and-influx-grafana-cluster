@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: influxdb-another
+  name: influxdb
 spec:
   capacity:
     storage: 1T
   accessModes:
   - ReadWriteMany
   nfs:
-    path: /testing
-    server: 172.25.19.2
+    path: /storage
+    server: 10.140.123.34
