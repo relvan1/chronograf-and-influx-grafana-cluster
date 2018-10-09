@@ -15,4 +15,4 @@ spec:
   selector:
     app: jenkins-jmeter
   type: LoadBalancer
-  loadBalancerIP: "146.148.68.166"
+  loadBalancerIP: "35.239.18.79"

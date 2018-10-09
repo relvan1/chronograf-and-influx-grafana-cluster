@@ -15,7 +15,7 @@ spec:
         app: jenkins-jmeter
     spec:
       containers:
-        - image: relvan/jenkins
+        - image: relvan/jenkins-stored
           name: jenkins
           ports:
             - containerPort: 8080

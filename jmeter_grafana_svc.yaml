@@ -11,4 +11,4 @@ spec:
   selector:
     app: jmeter-grafana
   type: LoadBalancer
-  loadBalancerIP: "104.197.173.165"  
+  loadBalancerIP: "35.188.130.224"  

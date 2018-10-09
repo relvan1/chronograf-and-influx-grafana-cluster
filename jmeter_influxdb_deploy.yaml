@@ -14,12 +14,16 @@ spec:
       labels:
         app: influxdb-jmeter
     spec:
+      initContainers:
+      - name: permission
+        image: relvan/new-inf
+        command: ['sh', '-c', 'chown -R influxdb:influxdb /var/lib/influxdb']
       containers:
-        - image: relvan/influxdb
+        - image: relvan/new-inf
           name: influxdb
           volumeMounts:
           - name: mypvc
-            mountPath: /var/fileserver
+            mountPath: /var/lib/influxdb
           ports:
             - containerPort: 8083
               name: influxd
@@ -32,7 +36,7 @@ spec:
       volumes:
       - name: mypvc
         persistentVolumeClaim:
-          claimName: fileserver-claim
+          claimName: influxdb-claim
           readOnly: false
       nodeSelector:
         type: storage-and-monitoring
