@@ -9,4 +9,4 @@ spec:
   - ReadWriteMany
   nfs:
     path: /storage
-    server: 10.140.123.34
+    server: 10.34.167.250

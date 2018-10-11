@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jmeter-jenkins
+  name: jenkins
   labels:
     app: jenkins-jmeter
 spec:
@@ -15,4 +15,4 @@ spec:
   selector:
     app: jenkins-jmeter
   type: LoadBalancer
-  loadBalancerIP: "35.239.18.79"
+  loadBalancerIP: "35.232.146.172"

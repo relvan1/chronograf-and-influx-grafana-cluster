@@ -2,7 +2,7 @@
 
 working_dir=`pwd`
 
-clusterName=influxdb-jenkins
+clusterName=influxdb
 zoneSelect=us-central1-f
 
 ###Creating Cluster in GKE with Default Values###
@@ -53,7 +53,7 @@ echo "Persistant-Volume Created"
 
 echo namespace = $tenant > $working_dir/tenant_export
 
-sleep 120
+sleep 30
 
 ###Creating Jmeter DB in Influx###
 echo "Creating the Jmeter DB"

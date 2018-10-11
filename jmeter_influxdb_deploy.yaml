@@ -1,23 +1,23 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: influxdb-jmeter
+  name: jmeter-influxdb
   labels:
-    app: influxdb-jmeter
+    app: jmeter-influxdb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: influxdb-jmeter
+      app: jmeter-influxdb
   template:
     metadata:
       labels:
-        app: influxdb-jmeter
+        app: jmeter-influxdb
     spec:
       initContainers:
       - name: permission
         image: relvan/new-inf
-        command: ['sh', '-c', 'chown -R influxdb:influxdb /var/lib/influxdb']
+        command: ['sh', '-c', 'chown influxdb:influxdb /var/lib/influxdb']
       containers:
         - image: relvan/new-inf
           name: influxdb
@@ -25,8 +25,6 @@ spec:
           - name: mypvc
             mountPath: /var/lib/influxdb
           ports:
-            - containerPort: 8083
-              name: influxd
             - containerPort: 8086
               name: api
             - containerPort: 8888

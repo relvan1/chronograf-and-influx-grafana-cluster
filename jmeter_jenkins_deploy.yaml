@@ -1,18 +1,18 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: jenkins-jmeter
+  name: jmeter-jenkins
   labels:
-    app: jenkins-jmeter
+    app: jmeter-jenkins
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jenkins-jmeter
+      app: jmeter-jenkins
   template:
     metadata:
       labels:
-        app: jenkins-jmeter
+        app: jmeter-jenkins
     spec:
       containers:
         - image: relvan/jenkins-stored
